@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+// Particles ID
+#particles-js {
+    background-color: #343A40;
+}
+
+// Make the two form in the middle of the screen SignIn and SignUp
+.form-wrapper {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// Body
+body {
+    height: 100%;
+    background-color: #666666;
+}
+
+
+// Media Query
+// @media screen and (max-width: 600px) {
+//     #particles-js {
+//         height: 100vh !important;
+//     }
+// }

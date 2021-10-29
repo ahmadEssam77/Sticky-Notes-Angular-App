@@ -1,0 +1,18 @@
+<div class="vh-100" id="particles-js">
+    <form class="form-wrapper w-50 position-absolute" [formGroup]="loginForm" (ngSubmit)="signInForm(loginForm)">
+        <input formControlName="email" type="email" name="" id="" class="form-control my-2" placeholder="Enter Email">
+        <div class="alert alert-danger my-1" *ngIf="loginForm.get('email')?.errors != null && loginForm.get('email')?.touched">
+            <p *ngIf="loginForm.get('email')?.errors?.required">Email is required</p>
+            <p *ngIf="loginForm.get('email')?.errors?.email">Email should be in email format</p>
+        </div>
+        <input formControlName="password" type="password" name="" id="" class="form-control my-2" placeholder="Enter Password">
+        <div class="alert alert-danger my-1" *ngIf="loginForm.get('password')?.errors != null && loginForm.get('password')?.touched">
+            <p *ngIf="loginForm.get('password')?.errors?.required">Password is required</p>
+            <p *ngIf="loginForm.get('password')?.errors?.pattern">Start with a capital letter, then 2 to 8 letters</p>
+        </div>
+        <input type="submit" name="" id="signInBTN" class="form-control my-2" value="Sign In">
+        <div class="alert alert-danger my-1" *ngIf="error">
+            {{error}}
+        </div>
+    </form>
+</div>

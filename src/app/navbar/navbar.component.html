@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand text-white notesTitle" href="#"> <span><i class="far fa-sticky-note"></i></span> Notes</a>
+        <span class="ps-3 portfolio" *ngIf="isLogin">Portfolio</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li *ngIf="isLogin">
+                    <p class="userNameColor pt-2 pe-2">Hi {{userName.first_name}}</p>
+                </li>
+                <li class="nav-item dropdown" *ngIf="!isLogin">
+                    <a class="nav-link dropdown-toggle text-white selected" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        SignIn
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="signIn">SignIn</a></li>
+                        <li><a class="dropdown-item" routerLink="signUp">SignUp</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" *ngIf="isLogin">
+                    <a class="nav-link dropdown-toggle text-white selected" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Logout
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="signIn"
+                                (click)="logOutTocallTheLogOutInAuthService()">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,77 @@
+<section id="home" class="">
+    <div class="container">
+        <!-- Modal For Adding Notes -->
+        <div class="modal fade" id="addNoteFirstModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Note</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form [formGroup]="addNotesFormGroup" (ngSubmit)="addNotes(addNotesFormGroup)">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <input formControlName="title" type="text" class="form-control" id="recipient-name"
+                                    placeholder="Title">
+                            </div>
+                            <div class="mb-3">
+                                <textarea formControlName="desc" class="form-control" id="message-text" cols="30"
+                                    rows="10" placeholder="Add Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-secondary noteBtn" data-bs-dismiss="modal"
+                                value="Add a sticky note" />
+
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modal For Deleting Notes -->
+        <div class="modal fade" id="deleteNoteSecondModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="w-50 mx-auto text-center text-primary">Do you really want to delete ?
+                            process cannot be undone</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" (click)="deleteNotes()" data-bs-dismiss="modal">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Outer Add note button -->
+        <div class="pt-5 pb-3 d-flex justify-content-end">
+            <button class="btn noteBtn" data-bs-toggle="modal" data-bs-target="#addNoteFirstModal">Add Note</button>
+        </div>
+        <!-- Display Notes Space -->
+        <div class="row">
+            <div class="col-md-3 my-3" *ngFor="let noteNote of myArray">
+                <div class="noteStyle">
+                    <div class="dropdown">
+                        <div class="" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item d-flex justify-content-between"> <span>Edit</span> <span><i
+                                            class="far fa-edit text-primary"></i></span> </a></li>
+                            <li data-bs-toggle="modal" data-bs-target="#deleteNoteSecondModal"><a class="dropdown-item d-flex justify-content-between"> <span>Delete</span> <span><i
+                                            class="fas fa-trash text-danger"></i></span> </a></li>
+                        </ul>
+                    </div>
+                    <h2>{{noteNote.title}}</h2>
+                    <p>{{noteNote.desc}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

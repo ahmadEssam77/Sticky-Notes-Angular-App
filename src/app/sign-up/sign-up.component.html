@@ -1,0 +1,80 @@
+<div class="vh-100" id="particles-js">
+
+    <form [formGroup]="registerForm" class="form-wrapper w-50 position-absolute"
+        (ngSubmit)="submitRegisterForm(registerForm)">
+
+        <div class="row ">
+            <div class="col-md-6">
+                <div>
+                    <input formControlName="first_name"  type="text" name="" id="" class="form-control my-1"
+                        placeholder="Enter First Name"
+                        
+                        [class.is-valid]="!registerForm.get('first_name')?.errors?.required && !registerForm.get('first_name')?.errors?.minlength && !registerForm.get('first_name')?.errors?.maxlength"
+                        >
+                    <div class="alert alert-danger mt-1"
+                        *ngIf="registerForm.get('first_name')?.errors != null && registerForm.get('first_name')?.touched">
+                        <p *ngIf="registerForm.get('first_name')?.errors?.required">First Name is required</p>
+                        <p *ngIf="registerForm.get('first_name')?.errors?.minlength">Minimum length should be 3</p>
+                        <p *ngIf="registerForm.get('first_name')?.errors?.maxlength">Maximum length should be 8</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <input formControlName="last_name" type="text" name="" id="" class="form-control mt-1"
+                        placeholder="Enter Last Name"
+                        [class.is-valid]="!registerForm.get('last_name')?.errors?.required && !registerForm.get('last_name')?.errors?.minlength && !registerForm.get('last_name')?.errors?.maxlength"
+                        >
+                    <div class="alert alert-danger mt-1"
+                        *ngIf="registerForm.get('last_name')?.errors != null && registerForm.get('last_name')?.touched">
+                        <p *ngIf="registerForm.get('last_name')?.errors?.required">Last Name is required</p>
+                        <p *ngIf="registerForm.get('last_name')?.errors?.minlength">Minimum length should be 3</p>
+                        <p *ngIf="registerForm.get('last_name')?.errors?.maxlength">Maximum length should be 8</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <input formControlName="email" type="email" name="" id="" class="form-control my-2"
+                placeholder="Enter Email"
+                [class.is-valid]="!registerForm.get('email')?.errors?.required && !registerForm.get('email')?.errors?.email"
+                >
+            <div class="alert alert-danger mt-1"
+                *ngIf="registerForm.get('email')?.errors != null && registerForm.get('email')?.touched">
+                <p *ngIf="registerForm.get('email')?.errors?.required">Email is required</p>
+                <p *ngIf="registerForm.get('email')?.errors?.email">Your email should be in email format</p>
+            </div>
+        </div>
+        <div>
+            <input formControlName="age" type="text" name="" id="" class="form-control my-2"
+                placeholder="Enter Your Age"
+                [class.is-valid]="!registerForm.get('age')?.errors?.required && !registerForm.get('age')?.errors?.min && !registerForm.get('age')?.errors?.max"
+                >
+            <div class="alert alert-danger mt-1"
+                *ngIf="registerForm.get('age')?.errors != null && registerForm.get('age')?.touched">
+                <p *ngIf="registerForm.get('age')?.errors?.required">Age is required</p>
+                <p *ngIf="registerForm.get('age')?.errors?.min">The minimum age should be 16</p>
+                <p *ngIf="registerForm.get('age')?.errors?.max">The maximum age should be 80</p>
+            </div>
+        </div>
+        <div>
+            <input formControlName="password" type="password" name="" id="" class="form-control my-2"
+                placeholder="Enter Password"
+                [class.is-valid]="!registerForm.get('password')?.errors?.required && !registerForm.get('password')?.errors?.pattern"
+                >
+            <div class="alert alert-danger mt-1"
+                *ngIf="registerForm.get('password')?.errors != null && registerForm.get('password')?.touched">
+                <p *ngIf="registerForm.get('password')?.errors?.required">Password is required</p>
+                <p *ngIf="registerForm.get('password')?.errors?.pattern">Start with a capital letter, then 2 to 8 letters</p>
+            </div>
+        </div>
+        <button [disabled]="registerForm.invalid" [class.changBG]="registerForm.valid" type="submit" name=""
+            id="submitBTN" class="form-control bg-secondary my-2 text-white opacity-75 border-0" value=""><span *ngIf="!isSignUp"> SignUp </span> <span *ngIf="isSignUp"><i class="fas fa-spinner fa-spin"></i></span></button> 
+        <div class="alert alert-danger m2" *ngIf="error">
+            {{error}}
+        </div>
+        <div class="alert alert-success m2" *ngIf="noError">
+            {{noError}}
+        </div>
+    </form>
+</div>
